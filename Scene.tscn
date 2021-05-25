@@ -6,7 +6,7 @@
 [ext_resource path="res://units/alice.svg" type="Texture" id=4]
 [ext_resource path="res://units/enemy.svg" type="Texture" id=5]
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node"]
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -16,22 +16,33 @@ centered = false
 
 [node name="Allies" type="Node2D" parent="Units"]
 
-[node name="Alice" type="Sprite" parent="Units/Allies"]
+[node name="Alice" type="Node2D" parent="Units/Allies"]
 position = Vector2( 725, 296 )
-texture = ExtResource( 4 )
 
 [node name="Sword" type="Sprite" parent="Units/Allies/Alice"]
-position = Vector2( -25, 3 )
+position = Vector2( -36.5102, -1.5874 )
 texture = ExtResource( 3 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Units/Allies/Alice"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Body" type="Sprite" parent="Units/Allies/Alice"]
+texture = ExtResource( 4 )
+
+[node name="UI" type="Position2D" parent="Units/Allies/Alice"]
+position = Vector2( 0, -40 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Units/Allies/Alice/UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Units/Allies/Alice/VBoxContainer"]
+[node name="Label" type="Label" parent="Units/Allies/Alice/UI/VBoxContainer"]
 margin_right = 40.0
 margin_bottom = 14.0
 text = "Alice"
@@ -39,10 +50,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="Units/Allies/Alice/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="Units/Allies/Alice/UI/VBoxContainer"]
 margin_top = 18.0
 margin_right = 40.0
-margin_bottom = 32.0
+margin_bottom = 20.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,10 +61,52 @@ __meta__ = {
 
 [node name="Enemies" type="Node2D" parent="Units"]
 
-[node name="Enemy" type="Sprite" parent="Units/Enemies"]
+[node name="Enemy" type="Node2D" parent="Units/Enemies"]
 position = Vector2( 302, 302 )
+
+[node name="Body" type="Sprite" parent="Units/Enemies/Enemy"]
 texture = ExtResource( 5 )
 
 [node name="Club" type="Sprite" parent="Units/Enemies/Enemy"]
 position = Vector2( -24, -2 )
 texture = ExtResource( 2 )
+
+[node name="UI" type="Position2D" parent="Units/Enemies/Enemy"]
+position = Vector2( 0, -46 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Units/Enemies/Enemy/UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Units/Enemies/Enemy/UI/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Alice"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="Units/Enemies/Enemy/UI/VBoxContainer"]
+margin_top = 18.0
+margin_right = 40.0
+margin_bottom = 20.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
