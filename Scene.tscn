@@ -50,38 +50,8 @@ texture = ExtResource( 5 )
 position = Vector2( -24, -2 )
 texture = ExtResource( 2 )
 
-[node name="UI" type="Position2D" parent="Units/Enemies/Enemy"]
+[node name="UI" parent="Units/Enemies/Enemy" instance=ExtResource( 6 )]
 position = Vector2( 0, -46 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Units/Enemies/Enemy/UI"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Units/Enemies/Enemy/UI/VBoxContainer"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Alice"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="Units/Enemies/Enemy/UI/VBoxContainer"]
-margin_top = 18.0
-margin_right = 40.0
-margin_bottom = 20.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
