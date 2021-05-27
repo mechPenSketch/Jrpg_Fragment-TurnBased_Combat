@@ -1,11 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://background.svg" type="Texture" id=1]
-[ext_resource path="res://units/enemy_club.svg" type="Texture" id=2]
-[ext_resource path="res://units/alice_sword.svg" type="Texture" id=3]
-[ext_resource path="res://units/alice.svg" type="Texture" id=4]
-[ext_resource path="res://units/enemy.svg" type="Texture" id=5]
-[ext_resource path="res://interfaces/UnitInterface.tscn" type="PackedScene" id=6]
+[ext_resource path="res://units/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://units/Alice.tscn" type="PackedScene" id=3]
 [ext_resource path="res://interfaces/commands/fight.svg" type="Texture" id=7]
 [ext_resource path="res://interfaces/commands/flee.svg" type="Texture" id=8]
 [ext_resource path="res://combat_system.gd" type="Script" id=9]
@@ -26,32 +23,13 @@ centered = false
 
 [node name="Allies" type="Node2D" parent="Units"]
 
-[node name="Alice" type="Node2D" parent="Units/Allies"]
+[node name="Alice" parent="Units/Allies" instance=ExtResource( 3 )]
 position = Vector2( 725, 296 )
-
-[node name="Sword" type="Sprite" parent="Units/Allies/Alice"]
-position = Vector2( -36.5102, -1.5874 )
-texture = ExtResource( 3 )
-
-[node name="Body" type="Sprite" parent="Units/Allies/Alice"]
-texture = ExtResource( 4 )
-
-[node name="UI" parent="Units/Allies/Alice" instance=ExtResource( 6 )]
 
 [node name="Enemies" type="Node2D" parent="Units"]
 
-[node name="Enemy" type="Node2D" parent="Units/Enemies"]
+[node name="Enemy" parent="Units/Enemies" instance=ExtResource( 2 )]
 position = Vector2( 302, 302 )
-
-[node name="Body" type="Sprite" parent="Units/Enemies/Enemy"]
-texture = ExtResource( 5 )
-
-[node name="Club" type="Sprite" parent="Units/Enemies/Enemy"]
-position = Vector2( -24, -2 )
-texture = ExtResource( 2 )
-
-[node name="UI" parent="Units/Enemies/Enemy" instance=ExtResource( 6 )]
-position = Vector2( 0, -46 )
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
