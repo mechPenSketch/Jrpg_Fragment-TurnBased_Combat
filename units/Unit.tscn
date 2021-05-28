@@ -3,6 +3,8 @@
 [node name="Unit" type="Node2D"]
 
 [node name="Body" type="Sprite" parent="."]
+hframes = 2
+vframes = 2
 
 [node name="UI" type="Position2D" parent="."]
 position = Vector2( 0, -40 )
