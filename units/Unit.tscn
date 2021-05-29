@@ -1,7 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Attack"
+[ext_resource path="res://fonts/noto_sans_ui/NotoSansUI-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://interfaces/unit/progress_line.svg" type="Texture" id=2]
+[ext_resource path="res://interfaces/unit/progress_fill.svg" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_size = 1
+outline_color = Color( 0.541176, 0.541176, 0.541176, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -29,8 +42,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -44,8 +56,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "KO'ed"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -64,42 +75,44 @@ tracks/0/keys = {
 [node name="Body" type="Sprite" parent="."]
 hframes = 2
 vframes = 2
-frame = 2
 
 [node name="UI" type="Position2D" parent="."]
-position = Vector2( 0, -40 )
+position = Vector2( 0, -60 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+margin_left = -64.0
+margin_top = -27.0
+margin_right = 64.0
+margin_bottom = 27.0
+theme = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="UI/VBoxContainer"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Alice"
+margin_right = 128.0
+margin_bottom = 34.0
+text = "Name"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer"]
-margin_top = 18.0
-margin_right = 40.0
-margin_bottom = 20.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextureProgress" type="TextureProgress" parent="UI/VBoxContainer"]
+margin_top = 38.0
+margin_right = 128.0
+margin_bottom = 46.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.258824, 0.258824, 0.258824, 1 )
+tint_over = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Attack = SubResource( 1 )
-anims/Idle = SubResource( 2 )
-anims/KO'ed = SubResource( 3 )
+anims/Attack = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/KO'ed = SubResource( 5 )

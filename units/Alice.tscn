@@ -7,3 +7,6 @@
 
 [node name="Body" parent="." index="0"]
 texture = ExtResource( 3 )
+
+[node name="Label" parent="UI/VBoxContainer" index="0"]
+text = "Alice"
