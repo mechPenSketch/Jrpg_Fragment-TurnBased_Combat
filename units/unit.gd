@@ -6,3 +6,6 @@ export(int) var speed = 5
 
 func _ready():
 	cur_hp = max_hp
+
+func play(s):
+	get_node("AnimationPlayer").play(s)

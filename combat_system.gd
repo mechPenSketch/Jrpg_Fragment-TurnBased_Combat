@@ -35,7 +35,15 @@ func activate_state():
 	match current_state:
 		COMMAND:
 			get_node("Control").show()
-	
+		ACTION:
+			current_turn = 0
+
+func activate_turn():
+	if current_turn < queue.size():
+		queue[current_turn].play("Attack")
+	else:
+		change_state(COMMAND)
+
 func change_state(new_state):
 	deactivate_state()
 	current_state = new_state
@@ -45,6 +53,8 @@ func deactivate_state():
 	match current_state:
 		COMMAND:
 			get_node("Control").hide()
+		ACTION:
+			queue = []
 
 func sort_by_speed(a, b):
 	return a["user"].speed > b["user"].speed
