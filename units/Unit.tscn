@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/noto_sans_ui/NotoSansUI-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://interfaces/unit/progress_line.svg" type="Texture" id=2]
+[ext_resource path="res://units/unit.gd" type="Script" id=3]
 [ext_resource path="res://interfaces/unit/progress_fill.svg" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -71,6 +72,7 @@ tracks/0/keys = {
 }
 
 [node name="Unit" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Body" type="Sprite" parent="."]
 hframes = 2
