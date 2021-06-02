@@ -6,10 +6,21 @@ export(int) var speed = 5
 
 signal anim_strike
 signal anim_end
+signal anim_gothit_end
+signal got_koed
 
 func _ready():
 	get_node("UI/VBoxContainer/TextureProgress").set_max(max_hp)
 	cur_hp = max_hp
+
+func _got_koed():
+	play("KO'ed")
+
+func gothit_end():
+	if cur_hp > 0:
+		emit_signal("anim_gothit_end")
+	else:
+		emit_signal("got_koed")
 
 func play(s):
 	get_node("AnimationPlayer").play(s)

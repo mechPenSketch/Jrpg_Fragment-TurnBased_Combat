@@ -146,4 +146,10 @@ margin_bottom = 82.0
 text = "Flee"
 align = 1
 
+[connection signal="anim_gothit_end" from="Units/Allies/Alice" to="." method="_on_unit_getting_hit_end"]
+[connection signal="anim_gothit_end" from="Units/Allies/Alice" to="Units/Allies/Alice" method="_gothit_end"]
+[connection signal="anim_strike" from="Units/Allies/Alice" to="." method="_on_unit_strike"]
+[connection signal="anim_gothit_end" from="Units/Enemies/Enemy" to="." method="_on_unit_getting_hit_end"]
+[connection signal="anim_gothit_end" from="Units/Enemies/Enemy" to="Units/Enemies/Enemy" method="_gothit_end"]
+[connection signal="anim_strike" from="Units/Enemies/Enemy" to="." method="_on_unit_strike"]
 [connection signal="pressed" from="Control/MarginContainer/Commands/Flee/Button" to="." method="_on_flee_pressed"]

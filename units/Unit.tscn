@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://fonts/noto_sans_ui/NotoSansUI-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://interfaces/unit/progress_line.svg" type="Texture" id=2]
 [ext_resource path="res://units/unit.gd" type="Script" id=3]
 [ext_resource path="res://interfaces/unit/progress_fill.svg" type="Texture" id=4]
+[ext_resource path="res://interfaces/hit_effects/hit.svg" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -60,6 +61,48 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "Getting Hit"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hit:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.247059, 0.247059, 0.247059, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "gothit_end"
+} ]
+}
+
 [sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
@@ -94,7 +137,10 @@ script = ExtResource( 3 )
 [node name="Body" type="Sprite" parent="."]
 hframes = 2
 vframes = 2
-frame = 2
+
+[node name="Hit" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
 
 [node name="UI" type="Position2D" parent="."]
 position = Vector2( 0, -60 )
@@ -134,5 +180,8 @@ tint_over = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 3 )
+"anims/Getting Hit" = SubResource( 6 )
 anims/Idle = SubResource( 4 )
 anims/KO'ed = SubResource( 5 )
+
+[connection signal="got_koed" from="." to="." method="_got_koed"]

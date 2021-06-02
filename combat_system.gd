@@ -11,14 +11,16 @@ func _on_command_pressed(cmd):
 	# PLAYER'S COMMAND
 	var new_dict = {
 		"user": get_node("Units/Allies/Alice"),
-		"power": cmd.power
+		"power": cmd.power,
+		"target": get_node("Units/Enemies/Enemy")
 	}
 	queue.append(new_dict)
 	
 	# ENEMIES COMMAND
 	var new_emy_dict = {
 		"user": get_node("Units/Enemies/Enemy"),
-		"power": cmd.power
+		"power": cmd.power,
+		"target": get_node("Units/Allies/Alice")
 	}
 	queue.append(new_emy_dict)
 	
@@ -31,11 +33,13 @@ func _on_command_pressed(cmd):
 func _on_flee_pressed():
 	change_state(FLEE)
 
-func _on_unit_strike():
-	
-	# ONTO NECT TURN
+func _on_unit_getting_hit_end():
+	# ONTO NEXT TURN
 	current_turn += 1
 	activate_turn()
+	
+func _on_unit_strike():
+	queue[current_turn]["target"].play("Getting Hit")
 
 func activate_state():
 	match current_state:
