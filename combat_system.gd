@@ -31,16 +31,23 @@ func _on_command_pressed(cmd):
 func _on_flee_pressed():
 	change_state(FLEE)
 
+func _on_unit_strike():
+	
+	# ONTO NECT TURN
+	current_turn += 1
+	activate_turn()
+
 func activate_state():
 	match current_state:
 		COMMAND:
 			get_node("Control").show()
 		ACTION:
 			current_turn = 0
+			activate_turn()
 
 func activate_turn():
 	if current_turn < queue.size():
-		queue[current_turn].play("Attack")
+		queue[current_turn]["user"].play("Attack")
 	else:
 		change_state(COMMAND)
 

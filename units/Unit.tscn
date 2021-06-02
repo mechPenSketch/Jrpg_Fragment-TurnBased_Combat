@@ -42,6 +42,23 @@ tracks/1/keys = {
 "method": "play"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "anim_strike" ],
+"method": "emit_signal"
+}, {
+"args": [ "anim_end" ],
+"method": "emit_signal"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 tracks/0/type = "value"
@@ -77,6 +94,7 @@ script = ExtResource( 3 )
 [node name="Body" type="Sprite" parent="."]
 hframes = 2
 vframes = 2
+frame = 2
 
 [node name="UI" type="Position2D" parent="."]
 position = Vector2( 0, -60 )
