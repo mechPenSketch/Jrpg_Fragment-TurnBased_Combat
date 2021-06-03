@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://fonts/noto_sans_ui/NotoSansUI-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://interfaces/unit/progress_line.svg" type="Texture" id=2]
 [ext_resource path="res://units/unit.gd" type="Script" id=3]
 [ext_resource path="res://interfaces/unit/progress_fill.svg" type="Texture" id=4]
 [ext_resource path="res://interfaces/hit_effects/hit.svg" type="Texture" id=5]
+[ext_resource path="res://fonts/noto_sans_ui/NotoSansUI-Bold.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -15,6 +16,13 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 48
+outline_size = 3
+outline_color = Color( 0.572549, 0.572549, 0.572549, 1 )
+extra_spacing_char = 5
+font_data = ExtResource( 6 )
 
 [sub_resource type="Animation" id=3]
 tracks/0/type = "value"
@@ -61,7 +69,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "Getting Hit"
 length = 1.2
 tracks/0/type = "value"
@@ -102,8 +110,44 @@ tracks/2/keys = {
 "method": "gothit_end"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageCounter:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageCounter:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DamageCounter:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -75 ) ]
+}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -116,8 +160,32 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageCounter:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -178,10 +246,31 @@ texture_progress = ExtResource( 4 )
 tint_under = Color( 0.258824, 0.258824, 0.258824, 1 )
 tint_over = Color( 0, 0, 0, 1 )
 
+[node name="DamageCounter" type="Position2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -75 )
+
+[node name="Label" type="Label" parent="DamageCounter"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.5
+margin_top = -33.5
+margin_right = 45.5
+margin_bottom = 33.5
+custom_fonts/font = SubResource( 7 )
+text = "999"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 3 )
-"anims/Getting Hit" = SubResource( 6 )
-anims/Idle = SubResource( 4 )
-anims/KO'ed = SubResource( 5 )
+"anims/Getting Hit" = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/KO'ed = SubResource( 6 )
 
 [connection signal="got_koed" from="." to="." method="_got_koed"]
