@@ -39,7 +39,7 @@ func _on_unit_getting_hit_end():
 	activate_turn()
 	
 func _on_unit_strike():
-	queue[current_turn]["target"].play("Getting Hit")
+	queue[current_turn]["target"].take_damage(queue[current_turn]["power"])
 
 func activate_state():
 	match current_state:

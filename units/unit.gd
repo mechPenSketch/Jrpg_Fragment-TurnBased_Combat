@@ -11,7 +11,7 @@ signal got_koed
 
 func _ready():
 	get_node("UI/VBoxContainer/TextureProgress").set_max(max_hp)
-	cur_hp = max_hp
+	set_cur_hp(max_hp)
 
 func _got_koed():
 	play("KO'ed")
@@ -30,3 +30,9 @@ func set_cur_hp(v):
 	
 	# UPDATE HP BAR
 	get_node("UI/VBoxContainer/TextureProgress").set_value(cur_hp)
+
+func take_damage(p):
+	# INPUT: POWER
+	set_cur_hp(cur_hp - p)
+	get_node("DamageCounter/Label").set_text(String(p))
+	play("Getting Hit")
