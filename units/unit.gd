@@ -33,6 +33,12 @@ func set_cur_hp(v):
 
 func take_damage(p):
 	# INPUT: POWER
-	set_cur_hp(cur_hp - p)
+	
+	# GET REMAINING HP
+	var remaining_hp = cur_hp - p
+	if remaining_hp < 0: remaining_hp = 0
+	set_cur_hp(remaining_hp)
+	
+	# UPDATE DAMAGE COUNTER
 	get_node("DamageCounter/Label").set_text(String(p))
 	play("Getting Hit")

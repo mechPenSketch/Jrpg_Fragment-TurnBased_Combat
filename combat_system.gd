@@ -1,6 +1,6 @@
 extends Node
 
-enum {COMMAND, ACTION, FLEE}
+enum {COMMAND, ACTION, FLEE, WIN, LOSE}
 var current_state = COMMAND
 
 var current_round
@@ -30,6 +30,12 @@ func _on_command_pressed(cmd):
 	# CHANGE STATE
 	change_state(ACTION)
 
+func _on_ally_getting_koed():
+	change_state(LOSE)
+	
+func _on_enemy_getting_koed():
+	change_state(WIN)
+
 func _on_flee_pressed():
 	change_state(FLEE)
 
@@ -37,17 +43,27 @@ func _on_unit_getting_hit_end():
 	# ONTO NEXT TURN
 	current_turn += 1
 	activate_turn()
-	
+
 func _on_unit_strike():
 	queue[current_turn]["target"].take_damage(queue[current_turn]["power"])
+
+func activate_outcome(s):
+	get_node("Control/Outcome/Label").set_text(s)
+	get_node("Control/Outcome").show()
 
 func activate_state():
 	match current_state:
 		COMMAND:
-			get_node("Control").show()
+			get_node("Control/MarginContainer").show()
 		ACTION:
 			current_turn = 0
 			activate_turn()
+		FLEE:
+			activate_outcome("You've Fled.")
+		WIN:
+			activate_outcome("Victory!")
+		LOSE:
+			activate_outcome("You have Fallen...")
 
 func activate_turn():
 	if current_turn < queue.size():
@@ -63,7 +79,7 @@ func change_state(new_state):
 func deactivate_state():
 	match current_state:
 		COMMAND:
-			get_node("Control").hide()
+			get_node("Control/MarginContainer").hide()
 		ACTION:
 			queue = []
 
