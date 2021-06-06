@@ -3,7 +3,7 @@
 * text eol=lf
 
 # Images
-*.png binary
+* .png binary
 
 # Custom for Visual Studio
 *.cs     diff=csharp
