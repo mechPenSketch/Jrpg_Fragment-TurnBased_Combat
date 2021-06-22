@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemy.svg-d7fe990433b67c1f84954566f61555ea.stex"
+path="res://.import/hit.svg-4fc5bfbb79e330236645ee7586900c2b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://units/enemy.svg"
-dest_files=[ "res://.import/enemy.svg-d7fe990433b67c1f84954566f61555ea.stex" ]
+source_file="res://combat_system/interfaces/hit_effects/hit.svg"
+dest_files=[ "res://.import/hit.svg-4fc5bfbb79e330236645ee7586900c2b.stex" ]
 
 [params]
 

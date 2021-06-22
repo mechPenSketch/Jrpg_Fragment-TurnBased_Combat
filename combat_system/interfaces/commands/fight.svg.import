@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fight.svg-516096a429cffb644f6f756f32bf056d.stex"
+path="res://.import/fight.svg-dca4849fb5d24eac219d31fa1048a7b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interfaces/commands/fight.svg"
-dest_files=[ "res://.import/fight.svg-516096a429cffb644f6f756f32bf056d.stex" ]
+source_file="res://combat_system/interfaces/commands/fight.svg"
+dest_files=[ "res://.import/fight.svg-dca4849fb5d24eac219d31fa1048a7b4.stex" ]
 
 [params]
 

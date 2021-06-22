@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flee.svg-adf3a808e412d317576babe8517ba29f.stex"
+path="res://.import/flee.svg-fa5164993d6516506ea36007c81ccbd7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interfaces/commands/flee.svg"
-dest_files=[ "res://.import/flee.svg-adf3a808e412d317576babe8517ba29f.stex" ]
+source_file="res://combat_system/interfaces/commands/flee.svg"
+dest_files=[ "res://.import/flee.svg-fa5164993d6516506ea36007c81ccbd7.stex" ]
 
 [params]
 
