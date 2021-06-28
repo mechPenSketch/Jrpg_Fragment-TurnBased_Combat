@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/progress_fill.svg-7ec19733f5192dc86c5afc872fbd4573.stex"
+path="res://.import/progress_line.svg-ecc77918306167275fcf0e4a8650f8d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://combat_system/interfaces/unit/progress_fill.svg"
-dest_files=[ "res://.import/progress_fill.svg-7ec19733f5192dc86c5afc872fbd4573.stex" ]
+source_file="res://battle_system/interfaces/unit/progress_line.svg"
+dest_files=[ "res://.import/progress_line.svg-ecc77918306167275fcf0e4a8650f8d4.stex" ]
 
 [params]
 

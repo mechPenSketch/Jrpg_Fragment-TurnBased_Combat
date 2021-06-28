@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://theme/fonts/noto_sans_ui/NotoSansUI-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://combat_system/interfaces/unit/progress_line.svg" type="Texture" id=2]
-[ext_resource path="res://combat_system/units/unit.gd" type="Script" id=3]
-[ext_resource path="res://combat_system/interfaces/unit/progress_fill.svg" type="Texture" id=4]
-[ext_resource path="res://combat_system/interfaces/hit_effects/hit.svg" type="Texture" id=5]
+[ext_resource path="res://battle_system/interfaces/unit/progress_line.svg" type="Texture" id=2]
+[ext_resource path="res://battle_system/units/unit.gd" type="Script" id=3]
+[ext_resource path="res://battle_system/interfaces/unit/progress_fill.svg" type="Texture" id=4]
+[ext_resource path="res://battle_system/interfaces/hit_effects/hit.svg" type="Texture" id=5]
 [ext_resource path="res://theme/fonts/noto_sans_ui/NotoSansUI-Bold.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]

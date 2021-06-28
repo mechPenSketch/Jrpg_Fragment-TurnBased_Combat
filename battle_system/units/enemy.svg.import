@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.svg-be83fd05d7a04f54723b97be0c5b2462.stex"
+path="res://.import/enemy.svg-1dd28f6db4573bec4fcae733362f595b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://combat_system/background.svg"
-dest_files=[ "res://.import/background.svg-be83fd05d7a04f54723b97be0c5b2462.stex" ]
+source_file="res://battle_system/units/enemy.svg"
+dest_files=[ "res://.import/enemy.svg-1dd28f6db4573bec4fcae733362f595b.stex" ]
 
 [params]
 
