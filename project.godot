@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="JRPG Fragment - Turn-Based Combat"
-run/main_scene="res://battle_system/BattleScene.tscn"
+run/main_scene="res://battle_system/formations/Example.tscn"
 config/icon="res://icon.png"
 
 [autoload]
